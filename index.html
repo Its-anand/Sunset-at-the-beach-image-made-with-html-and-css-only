@@ -19,8 +19,21 @@
         {
             background-color: #314A52;
             height: 100vh;
-            background-image: linear-gradient( #FF5F2F, #FD9F32, #FE602F);
+            background-image: linear-gradient( #8E4163, #FD9F32, #FE602F);
             z-index: -1;
+        }
+        .sun2
+        {
+
+            width: 170px;
+            height: 170px;
+            border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
+            box-shadow: 0px 224px 368px 325px #EF7D24;
+            background-color: #fff1c2;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         .sun
         {
@@ -28,7 +41,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
-            box-shadow: 0px 224px 368px 325px #EF7D24;
+            box-shadow: 0px 1px 76px 114px #ef7d24;
             background-color: #FFF9C2;
             position: absolute;
             top: 60%;
@@ -75,7 +88,8 @@
 </head>
 <body>
 <section class="sky">
-  
+    <section class="sun2"></section>
+
     <section class="sun"></section>
     <section class="sun_shadow1"></section>
     <section class="sun_shadow2"></section>
