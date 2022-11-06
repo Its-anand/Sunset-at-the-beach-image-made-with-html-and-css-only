@@ -28,13 +28,34 @@
             width: 150px;
             height: 150px;
             border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
-            box-shadow: 0px 224px 368px 325px #EF7D24, inset 0px -20px 42px 32px #ec5600;
-
-            background-color: #ff8000;
+            box-shadow: 0px 224px 368px 325px #EF7D24;
+            background-color: #FFF9C2;
             position: absolute;
             top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+        .sun_shadow1
+        {
+            width: 100px;
+            height: 20px;
+            background-color: #FFF9C2;
+            position: absolute;
+            top: 72%; /*75%*/
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 40%;
+        }
+        .sun_shadow2
+        {
+            width: 80px;
+            height: 20px;
+            background-color: #FFF9C2;
+            position: absolute;
+            top: 76%; /*75%*/
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 40%;
         }
 
         .field
@@ -56,6 +77,9 @@
 <section class="sky">
   
     <section class="sun"></section>
+    <section class="sun_shadow1"></section>
+    <section class="sun_shadow2"></section>
+
 </section>
 
 <section class="field"></section>
