@@ -1,33 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body
-        {
-            margin: 0; padding: 0px; 
+        :root {
+            --closeColor: #3b1006;
         }
-        .sky, .water
-        {
+
+        @keyframes sunShadowAnime {
+            0% {
+                transform: translate(-50%, -50%) scale(0.9);
+
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1);
+
+            }
+            
+            75% {
+                transform: translate(-50%, -50%) scale(0.9);
+
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+
+            }
+        }
+
+
+
+        @keyframes leafCenterAnime {
+            0% {
+                transform: rotate(0deg);
+                right: 12.8px;
+            }
+
+            50% {
+                transform: rotate(2deg);
+            right: 13px;
+            }
+
+            75% {
+                transform: rotate(0deg);
+            right: 12.8px;
+            }
+
+            100% {
+                transform: rotate(2deg);
+            right: 13px;
+            }
+        }
+        @keyframes woodenBlockAnime {
+            0% {
+                transform: rotate(-2deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+
+            75% {
+                transform: rotate(-2deg);
+            }
+
+            100% {
+                transform: rotate(5deg);
+            }
+        }
+        @keyframes cloud {
+
+            100% {
+                left: 150vmin;
+            }
+        }
+
+        @keyframes drop {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0px;
+            overflow: hidden;
+        }
+
+        .sky,
+        .water {
             width: 100%;
         }
 
-        .sky
-        {
-            background-color: #314A52;
+        .sky {
+            background-color: #88BEE4;
             height: 100vh;
-            background-image: linear-gradient( #8E4163, #FD9F32, #FE602F);
+            background-image: linear-gradient(#FE602F, #FD9F32, #FE602F);
             z-index: -1;
         }
-        .sun2
-        {
+
+        .sun2 {
 
             width: 170px;
             height: 170px;
-            border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
+            border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;
+            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
             box-shadow: 0px 224px 368px 325px #EF7D24;
             background-color: #fff1c2;
             position: absolute;
@@ -35,12 +124,13 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        .sun
-        {
+
+        .sun {
 
             width: 150px;
             height: 150px;
-            border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
+            border-radius: 50% 50% 20% 20% / 50% 50% 50% 50%;
+            /* box-shadow:inset 1px -20px 39px 30px #ec9600; */
             box-shadow: 0px 1px 76px 114px #ef7d24;
             background-color: #FFF9C2;
             position: absolute;
@@ -48,57 +138,1325 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        .sun_shadow1
-        {
+
+        .sun_shadow1 {
             width: 100px;
             height: 20px;
+
             background-color: #FFF9C2;
             position: absolute;
-            top: 72%; /*75%*/
+            top: 72%;
+            /*75%*/
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) ;
             border-radius: 40%;
+            animation-name: sunShadowAnime;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
-        .sun_shadow2
-        {
+
+        .sun_shadow2 {
             width: 80px;
             height: 20px;
             background-color: #FFF9C2;
             position: absolute;
-            top: 76%; /*75%*/
+            top: 76%;
+            /*75%*/
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) ;
             border-radius: 40%;
+            animation-name: sunShadowAnime;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
 
-        .water
-        {
-            background-image: linear-gradient(  #FD9F32, #FE602F);
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 100px );
+        .water {
+            background-image: linear-gradient(#FD9F32, #FE602F);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(100px);
             height: 40vh;
-            z-index: 10;
             opacity: .5;
             position: absolute;
             bottom: 0px;
+            overflow: hidden;
         }
 
+        .rock1 {
+            background-color: var(--closeColor);
+            width: 14rem;
+            height: 5rem;
+            position: absolute;
+            top: 0rem;
+            left: 8rem;
+            transform: rotate(360deg);
+            border-radius: 70% 54% 39% 56% / 144% 90% 107% 14%;
+            z-index: 2;
+
+        }
+
+        .rock2 {
+            background-color: var(--closeColor);
+            width: 40rem;
+            height: 12rem;
+            position: absolute;
+            bottom: -5rem;
+            right: -4rem;
+            transform: rotate(353deg);
+            border-radius: 70% 25% 74% 24% / 69% 73% 35% 54%;
+            z-index: 2;
+
+        }
+
+
+        .tree {
+            position: absolute;
+            width: 13rem;
+            height: 25rem;
+            position: absolute;
+            bottom: 6rem;
+            right: 18rem;
+            transform: rotate(353deg);
+            z-index: 2;
+        }
+
+        .woodenBlock1 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 0px;
+            right: 3rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
+
+        .woodenBlock2 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 23px;
+            right: 3rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(359deg);
+
+        }
+
+        .woodenBlock3 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 51px;
+            right: 3rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(6deg);
+        }
+
+        .woodenBlock4 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 82px;
+            right: 3rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(5deg);
+        }
+
+        .woodenBlock5 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 113px;
+            right: 2.9rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(5deg);
+
+        }
+
+        .woodenBlock6 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 140px;
+            right: 2.9rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(6deg);
+
+        }
+
+        .woodenBlock7 {
+            width: 4rem;
+            height: 2rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 168px;
+            right: 2.9rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(6deg);
+
+        }
+
+        .woodenBlock8 {
+            width: 4rem;
+            height: 6rem;
+            background-color: var(--closeColor);
+            position: absolute;
+            bottom: 182px;
+            right: 2.9rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 50px;
+            transform: rotate(5deg);
+            animation: woodenBlockAnime 21s infinite alternate;
+
+        }
+
+        .leafCenter {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            background-color: #3b1006;
+            position: absolute;
+            bottom: 257px;
+            right: 12.8px;
+            animation-name: leafCenterAnime;
+            animation-duration: 20s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .leaf1 {
+            transform: rotate(42deg);
+            position: absolute;
+            width: 18rem;
+            height: 10rem;
+            top: 58px;
+            left: 0.8rem;
+            z-index: -1;
+
+        }
+
+        .leaf1 .leaf {
+            position: absolute;
+
+            width: 18rem;
+            height: 10rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf1 .subLeaf1 {
+            position: absolute;
+            top: 5rem;
+            left: 4.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf2 {
+            position: absolute;
+            top: 5rem;
+            left: 6rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf3 {
+            position: absolute;
+            top: 5rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf4 {
+            position: absolute;
+            top: 4.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf5 {
+            position: absolute;
+            top: 5rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf6 {
+            position: absolute;
+            top: 5rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 4.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf8 {
+            position: absolute;
+            top: 4rem;
+            left: 15.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(318deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf9 {
+            position: absolute;
+            top: 5.7rem;
+            left: 4.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(318deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf1 .subLeaf10 {
+            position: absolute;
+            top: 8rem;
+            right: 13.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(343deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(87% 4%, 57% 12%, 64% 83%);
+            clip-path: polygon(87% 4%, 57% 12%, 64% 83%);
+        }
+
+        /*2*/
+        .leaf2 {
+            transform: rotate(9deg);
+            position: absolute;
+            width: 18rem;
+            height: 10rem;
+            top: -55px;
+            left: 5.8rem;
+            z-index: -1;
+        }
+
+        .leaf2 .leaf {
+            position: absolute;
+
+            width: 22rem;
+            height: 15rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf2 .subLeaf1 {
+            position: absolute;
+            top: 8rem;
+            left: 4.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf2 {
+            position: absolute;
+            top: 8rem;
+            left: 6rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf3 {
+            position: absolute;
+            top: 8rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf4 {
+            position: absolute;
+            top: 7.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf5 {
+            position: absolute;
+            top: 8rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf6 {
+            position: absolute;
+            top: 8rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 7.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf2 .subLeaf8 {
+            position: absolute;
+            top: 7rem;
+            left: 17.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(318deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+
+        /*3*/
+        .leaf3 {
+            transform: rotate(332deg);
+            position: absolute;
+            width: 18rem;
+            height: 10rem;
+            top: -159px;
+            left: 2.8rem;
+            z-index: -1;
+
+        }
+
+        .leaf3 .leaf {
+            position: absolute;
+
+            width: 18rem;
+            height: 15rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf3 .subLeaf1 {
+            position: absolute;
+            top: 8rem;
+            left: 2.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf2 {
+            position: absolute;
+            top: 8rem;
+            left: 5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf3 {
+            position: absolute;
+            top: 8rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf4 {
+            position: absolute;
+            top: 7.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf5 {
+            position: absolute;
+            top: 8rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf6 {
+            position: absolute;
+            top: 8rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 7.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf3 .subLeaf8 {
+            position: absolute;
+            top: 6.5rem;
+            left: 15.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(313deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        /*4*/
+        .leaf4 {
+            transform: rotate(303deg);
+            position: absolute;
+            width: 18rem;
+            height: 10rem;
+            top: -207px;
+            left: -3.2rem;
+            z-index: -1;
+
+        }
+
+        .leaf4 .leaf {
+            position: absolute;
+
+            width: 18rem;
+            height: 15rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf4 .subLeaf1 {
+            position: absolute;
+            top: 8rem;
+            left: 2.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf2 {
+            position: absolute;
+            top: 8rem;
+            left: 5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf3 {
+            position: absolute;
+            top: 8rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf4 {
+            position: absolute;
+            top: 7.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf5 {
+            position: absolute;
+            top: 8rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf6 {
+            position: absolute;
+            top: 8rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 7.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf4 .subLeaf8 {
+            position: absolute;
+            top: 6.5rem;
+            left: 15.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(313deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        /*5*/
+        .leaf5 {
+            transform: rotate(321deg) scaleX(-1);
+            position: absolute;
+            width: 20rem;
+            height: 8rem;
+            bottom: -109px;
+            right: 1.8rem;
+            z-index: -1;
+
+        }
+
+        .leaf5 .leaf {
+            position: absolute;
+
+            width: 20rem;
+            height: 10rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf5 .subLeaf1 {
+            position: absolute;
+            top: 5rem;
+            left: 4.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf2 {
+            position: absolute;
+            top: 5rem;
+            left: 6rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf3 {
+            position: absolute;
+            top: 5rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf4 {
+            position: absolute;
+            top: 4.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf5 {
+            position: absolute;
+            top: 5rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf6 {
+            position: absolute;
+            top: 5rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 4.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf8 {
+            position: absolute;
+            top: 4rem;
+            left: 15.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(318deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf9 {
+            position: absolute;
+            top: 5.7rem;
+            left: 4.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(318deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf5 .subLeaf10 {
+            position: absolute;
+            top: 8rem;
+            right: 13.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(343deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(87% 4%, 57% 12%, 64% 83%);
+            clip-path: polygon(87% 4%, 57% 12%, 64% 83%);
+        }
+
+        /*6*/
+        .leaf6 {
+            transform: rotate(339deg) scaleX(-1);
+            position: absolute;
+            width: 37rem;
+            height: 18rem;
+            bottom: -187px;
+            right: 3.8rem;
+            z-index: -1;
+
+        }
+
+        .leaf6 .leaf {
+            position: absolute;
+            width: 18rem;
+            height: 15rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf6 .subLeaf1 {
+            position: absolute;
+            top: 8rem;
+            left: 2.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf2 {
+            position: absolute;
+            top: 8rem;
+            left: 5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf3 {
+            position: absolute;
+            top: 8rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf4 {
+            position: absolute;
+            top: 7.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf5 {
+            position: absolute;
+            top: 8rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf6 {
+            position: absolute;
+            top: 8rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 7.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf6 .subLeaf8 {
+            position: absolute;
+            top: 6.5rem;
+            left: 15.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(313deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        /*7*/
+        .leaf7 {
+            transform: rotate(23deg) scaleX(-1);
+            position: absolute;
+            width: 18rem;
+            height: 15rem;
+            bottom: 52px;
+            right: 3.8rem;
+            z-index: -1;
+
+        }
+
+        .leaf7 .leaf {
+            position: absolute;
+
+            width: 18rem;
+            height: 15rem;
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+            clip-path: polygon(49% 26%, 74% 33%, 89% 46%, 100% 63%, 76% 63%, 49% 63%, 20% 63%, 0 63%, 9% 46%, 26% 32%);
+        }
+
+        .leaf7 .subLeaf1 {
+            position: absolute;
+            top: 8rem;
+            left: 2.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf2 {
+            position: absolute;
+            top: 8rem;
+            left: 5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf3 {
+            position: absolute;
+            top: 8rem;
+            left: 7rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf4 {
+            position: absolute;
+            top: 7.6rem;
+            left: 8.3rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(321deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf5 {
+            position: absolute;
+            top: 8rem;
+            left: 10rem;
+            width: 4rem;
+            height: 4.4rem;
+            transform: rotate(324deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf6 {
+            position: absolute;
+            top: 8rem;
+            left: 12rem;
+            width: 4rem;
+            height: 4rem;
+            transform: rotate(320deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf7 {
+            position: absolute;
+            position: absolute;
+            top: 7.6rem;
+            left: 14.5rem;
+            width: 3rem;
+            height: 4rem;
+            transform: rotate(302deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+        .leaf7 .subLeaf8 {
+            position: absolute;
+            top: 6.5rem;
+            left: 15.5rem;
+            width: 4rem;
+            height: 5rem;
+            transform: rotate(313deg);
+            background-color: var(--closeColor);
+            -webkit-clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+            clip-path: polygon(27% 8%, 57% 12%, 64% 83%);
+        }
+
+
+
+        .drop1 {
+            position: absolute;
+            width: 8vmin;
+            height: 3vmin;
+            border: 2px solid #dedede;
+            box-shadow: 0 0 2px #dedede;
+            border-radius: 50%;
+            bottom: 7rem;
+            left: 10rem;
+            animation: drop 9s infinite;
+            transform: scale(0);
+        }
+
+        .drop2 {
+            position: absolute;
+            width: 8vmin;
+            height: 3vmin;
+            border: 2px solid #dedede;
+            box-shadow: 0 0 2px #dedede;
+            border-radius: 50%;
+            top: 3rem;
+            right: 10rem;
+            animation: drop 14s infinite;
+            transform: scale(0);
+
+        }
+        .drop3 {
+            position: absolute;
+            width: 8vmin;
+            height: 3vmin;
+            border: 2px solid #dedede;
+            box-shadow: 0 0 2px #dedede;
+            border-radius: 50%;
+            bottom: 3rem;
+            left: 19rem;
+            animation: drop 4s infinite;
+            transform: scale(0);
+
+        }
+        .drop4 {
+            position: absolute;
+            width: 8vmin;
+            height: 3vmin;
+            border: 2px solid #dedede;
+            box-shadow: 0 0 2px #dedede;
+            border-radius: 50%;
+            top: 5rem;
+            left: 30rem;
+            animation: drop 12s infinite;
+            transform: scale(0);
+
+        }
+        .drop5 {
+            position: absolute;
+            width: 8vmin;
+            height: 3vmin;
+            border: 2px solid #dedede;
+            box-shadow: 0 0 2px #dedede;
+            border-radius: 50%;
+            top: 7rem;
+            right: 4rem;
+            animation: drop 7s infinite;
+            transform: scale(0);
+
+        }
+
+
+        .cloud {
+            width: 20vmin;
+            height: 6vmin;
+            background: currentcolor;
+            color: #fe682f;
+            border-radius: 50%;
+            box-shadow: 7vmin 0.5vmin 0 -1vmin currentcolor, -9vmin 0 0 -0.6vmin currentcolor;
+            opacity: 0.4;
+            position: absolute;
+            animation-name: cloud;
+            animation-duration: 20s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .cloud1 {
+            top: 24vmin;
+            left: 20vmin;
+            animation-delay: 0s;
+
+        }
+
+        .cloud2 {
+            top: 35vmin;
+            left: 52vmin;
+            animation-delay: 1s;
+
+        }
+
+        .cloud3 {
+            top: 42vmin;
+            left: -27vmin;
+            animation-delay: 3s;
+
+        }
+
+        .cloud4 {
+            top: 13vmin;
+            left: 63vmin;
+            animation-delay: 3s;
+
+        }
+        
     </style>
 </head>
+
 <body>
-<section class="sky">
-    <section class="sun2"></section>
+    <section class="rock2">
+        <section class="rock1"></section>
+    </section>
+    <section class="tree">
+        <div class="woodenBlock1"></div>
+        <div class="woodenBlock2"></div>
+        <div class="woodenBlock3"></div>
+        <div class="woodenBlock4"></div>
+        <div class="woodenBlock5"></div>
+        <div class="woodenBlock6"></div>
+        <div class="woodenBlock7"></div>
+        <div class="woodenBlock8"></div>
+        <div class="leafCenter">
+            <section class="leaf1">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
+                <div class="subLeaf9"></div>
+                <div class="subLeaf10"></div>
+            </section>
+            <section class="leaf2">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
 
-    <section class="sun"></section>
-    <section class="sun_shadow1"></section>
-    <section class="sun_shadow2"></section>
+            </section>
+            <section class="leaf3">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
+            </section>
+            <section class="leaf4">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
+            </section>
+            <section class="leaf5">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
+            </section>
+            <section class="leaf6">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
+            </section>
+            <section class="leaf7">
+                <div class="leaf">
+                </div>
+                <div class="subLeaf1"></div>
+                <div class="subLeaf2"></div>
+                <div class="subLeaf3"></div>
+                <div class="subLeaf4"></div>
+                <div class="subLeaf5"></div>
+                <div class="subLeaf6"></div>
+                <div class="subLeaf7"></div>
+                <div class="subLeaf8"></div>
+            </section>
 
-</section>
+        </div>
+    </section>
 
-<section class="water">
-<section ></section>
-<section></section>
-</section>
+    <section class="cloud1 cloud"></section>
+    <section class="cloud2 cloud"></section>
+    <section class="cloud3 cloud"></section>
+    <section class="cloud4 cloud"></section>
+    <section class="sky">
+        <section class="sun2"></section>
+        <section class="sun"></section>
+        <section class="sun_shadow1"></section>
+        <section class="sun_shadow2"></section>
+    </section>
+    <section class="water">
+        <div class="drop1"></div>
+        <div class="drop2"></div>
+        <div class="drop3"></div>
+        <div class="drop4"></div>
+        <div class="drop5"></div>
 
+    </section>
 </body>
+
 </html>
