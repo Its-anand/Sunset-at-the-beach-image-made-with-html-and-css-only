@@ -1,4 +1,4 @@
-<h1>Pure Css Art</h1>
+<h1>Sunset at the beach image <br> created with html and css only</h1>
 
 <p>**************************************************************</p>
 
